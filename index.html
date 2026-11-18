@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dominio del Teclado | Keymaster Academy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h2>⌨️ KEYMASTER</h2>
+      <p class="subtitle">ACADEMY</p>
+
+      <nav>
+        <button class="nav active" data-page="inicio">🏠 Inicio</button>
+        <button class="nav" data-page="entrenamiento">⌨️ Entrenamiento</button>
+        <button class="nav" data-page="mapa">🗺️ Aventuras</button>
+        <button class="nav" data-page="misiones">🎯 Misiones diarias</button>
+        <button class="nav" data-page="mascotas">🐾 Mascotas</button>
+        <button class="nav" data-page="ranking">🏆 Ranking</button>
+        <button class="nav" data-page="logros">🎖️ Trofeos</button>
+        <button class="nav" data-page="estadisticas">📊 Estadísticas</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button id="themeBtn" class="secondary">🌙 Modo oscuro</button>
+        <button id="musicBtn" class="secondary">🔊 Activar música</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="pageTitle">¡Bienvenido, estudiante!</h1>
+          <p>Practica, aprende y conviértete en un maestro del teclado.</p>
+        </div>
+        <div class="profile">⭐ <span id="levelName">Principiante</span></div>
+      </header>
+
+      <section id="inicio" class="page active">
+        <div class="hero">
+          <div>
+            <span class="tag">TU AVENTURA COMIENZA AQUÍ</span>
+            <h2>¡Domina el teclado!</h2>
+            <p>Mejora tu velocidad, precisión y habilidad con divertidos desafíos.</p>
+            <button class="primary" data-go="entrenamiento">Comenzar aventura →</button>
+          </div>
+          <div class="hero-pet" id="homePet">🦁</div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span>🪙 Monedas</span><strong id="coins">0</strong></article>
+          <article class="stat-card"><span>⭐ Experiencia</span><strong id="xp">0 XP</strong></article>
+          <article class="stat-card"><span>🏅 Récord</span><strong id="record">0</strong></article>
+          <article class="stat-card"><span>🎮 Partidas</span><strong id="games">0</strong></article>
+        </div>
+
+        <div class="panel">
+          <h3>Tu progreso</h3>
+          <div class="progress"><div id="homeProgress"></div></div>
+          <p id="progressText">0 / 100 XP para el siguiente rango</p>
+        </div>
+
+        <div class="panel">
+          <h3>🚀 Accesos rápidos</h3>
+          <div class="quick-grid">
+            <button data-go="entrenamiento">⌨️ Practicar</button>
+            <button data-go="mascotas">🐾 Mis mascotas</button>
+            <button data-go="misiones">🎯 Ver misiones</button>
+            <button data-go="ranking">🏆 Ver ranking</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="entrenamiento" class="page">
+        <div class="panel">
+          <h2>⌨️ Zona de entrenamiento</h2>
+          <div class="settings-grid">
+            <label>Nivel
+              <select id="difficulty">
+                <option value="basico">Básico · 2 vidas</option>
+                <option value="intermedio">Intermedio · 3 vidas</option>
+                <option value="avanzado">Avanzado · 1 vida</option>
+              </select>
+            </label>
+            <label>Ejercicio
+              <select id="exerciseType">
+                <option value="palabras">Palabras</option>
+                <option value="frases">Frases</option>
+                <option value="numeros">Números</option>
+                <option value="mixto">Ejercicios mixtos</option>
+              </select>
+            </label>
+            <label>Velocidad de lectura
+              <select id="voiceSpeed">
+                <option value="0.7">Lenta</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.35">Rápida</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="game-info">
+            <div>❤️ Vidas: <strong id="lives">2</strong></div>
+            <div>⏱️ Tiempo: <strong id="time">60</strong>s</div>
+            <div>⭐ Puntos: <strong id="score">0</strong></div>
+          </div>
+
+          <div class="target-box">
+            <p id="targetLabel">PREPARADO PARA PRACTICAR</p>
+            <div id="target">Presiona comenzar</div>
+          </div>
+
+          <input id="typingInput" type="text" placeholder="Escribe aquí..." autocomplete="off" disabled>
+          <p id="feedback" aria-live="polite">¡Escribe el texto que aparece arriba!</p>
+
+          <div class="button-row">
+            <button id="startBtn" class="primary">▶ Comenzar</button>
+            <button id="speakBtn">🔊 Escuchar</button>
+            <button id="restartBtn">↻ Reiniciar</button>
+          </div>
+
+          <div class="game-info">
+            <span>⚡ PPM: <strong id="ppm">0</strong></span>
+            <span>🎯 Precisión: <strong id="accuracy">100%</strong></span>
+            <span>✅ Aciertos: <strong id="hits">0</strong></span>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>💡 Consejo</h3>
+          <p>Escribe con calma y precisión. Primero mejora tu exactitud y después aumenta la velocidad.</p>
+        </div>
+      </section>
+
+      <section id="mapa" class="page">
+        <div class="panel">
+          <h2>🗺️ Mapa de aventuras</h2>
+          <p>Completa partidas para avanzar por los mundos.</p>
+          <div class="worlds">
+            <div class="world unlocked" id="world1">🌳<h3>Bosque inicial</h3><p>Siempre disponible</p></div>
+            <div class="world" id="world2">🏜️<h3>Desierto veloz</h3><p>5 partidas</p></div>
+            <div class="world" id="world3">❄️<h3>Montaña helada</h3><p>10 partidas</p></div>
+            <div class="world" id="world4">🚀<h3>Espacio experto</h3><p>20 partidas</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="misiones" class="page">
+        <div class="panel">
+          <h2>🎯 Misiones diarias</h2>
+          <p>Completa los desafíos y consigue monedas.</p>
+          <div id="missionList"></div>
+        </div>
+      </section>
+
+      <section id="mascotas" class="page">
+        <div class="panel">
+          <h2>🐾 Colección de mascotas</h2>
+          <p>Desbloquea compañeros usando tus monedas.</p>
+          <div class="pet-active">
+            <span id="activePet">🦁</span>
+            <div><strong id="activePetName">León</strong><p id="petEvolution">Nivel de evolución: 1</p></div>
+          </div>
+          <div id="petGrid" class="pet-grid"></div>
+        </div>
+      </section>
+
+      <section id="ranking" class="page">
+        <div class="panel">
+          <h2>🏆 Ranking de jugadores</h2>
+          <p>Clasificación guardada en este navegador.</p>
+          <ol id="rankingList"></ol>
+          <p class="small">Este ranking es local; no representa una clasificación mundial.</p>
+        </div>
+      </section>
+
+      <section id="logros" class="page">
+        <div class="panel">
+          <h2>🎖️ Trofeos y logros</h2>
+          <div id="achievementList" class="achievement-grid"></div>
+          <hr>
+          <h3>🎁 Ruleta de premios</h3>
+          <p>Gira una vez por partida terminada.</p>
+          <button id="spinBtn" class="primary" disabled>🎡 Girar ruleta</button>
+          <h3 id="spinResult">¡Consigue premios!</h3>
+        </div>
+      </section>
+
+      <section id="estadisticas" class="page">
+        <div class="panel">
+          <h2>📊 Tus estadísticas</h2>
+          <div class="stats-grid">
+            <article class="stat-card"><span>⚡ Mejor PPM</span><strong id="bestPPM">0</strong></article>
+            <article class="stat-card"><span>🎯 Precisión media</span><strong id="averageAccuracy">0%</strong></article>
+            <article class="stat-card"><span>✅ Aciertos totales</span><strong id="totalHits">0</strong></article>
+            <article class="stat-card"><span>🎮 Partidas jugadas</span><strong id="totalGames">0</strong></article>
+          </div>
+        </div>
+      </section>
+
+      <footer>KEYMASTER ACADEMY · Aprende jugando 🎮</footer>
+    </main>
+  </div>
+
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <div id="resultIcon">🏆</div>
+      <h2 id="resultTitle">¡Partida terminada!</h2>
+      <p id="resultText"></p>
+      <button id="closeModal" class="primary">Continuar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
